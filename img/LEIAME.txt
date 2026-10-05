@@ -1,0 +1,19 @@
+FOTOS DO SR. CACHOS
+
+As fotos enviadas para a V2.0 já estão configuradas no js/config.js.
+
+- image6.jpeg / image0.jpeg: hero
+- image1, image2, image3 e image5: galeria de resultados (sem repetir as fotos do hero)
+- image14 + image15: antes/depois 1
+- image16 + image17: antes/depois 2
+- image18 + image19: antes/depois 3
+- image7.jpeg a image13.jpeg: equipe
+
+Quando tiver fotos reais do ambiente do salão, elas podem substituir os placeholders da seção/elementos de ambiente que forem adicionados depois.
+
+Para trocar uma foto, altere apenas o campo src correspondente em js/config.js.
+
+LOGO
+- img/logo.svg: versão limpa (redesenhada a partir da vetorização). Usada no cabeçalho, seção "O salão", contato e rodapé (definida em js/main.js, constantes LOGO_VB/LOGO_D).
+- img/favicon.svg: ícone da aba do navegador.
+- img/logo-original-vetorizada.svg: arquivo original enviado, guardado como referência.
