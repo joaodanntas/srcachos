@@ -179,3 +179,19 @@ body>footer a{padding:8px 0;display:inline-block}
 #foot{display:inline-flex;align-items:center;gap:12px}
 .foot-mark{width:20px;color:var(--sage);flex:none}
 @media(max-width:760px){.wm-about{width:80vw;right:-24%;bottom:-6%}.wm-cta{width:78vw;right:-26%;top:auto;bottom:-8%;transform:none}}
+
+/* ===== Fix mobile: menu e imagem de serviços ===== */
+.logo{white-space:nowrap}
+
+@media(max-width:760px){
+  /* permite o nav descer para a linha de baixo */
+  header .wrap{flex-wrap:wrap;row-gap:0}
+  .menu-toggle{flex:none}
+  nav{flex:0 0 100%;width:100%}
+}
+
+@media(max-width:860px){
+  /* mantém a proporção vertical do desktop */
+  .serv .side .ph{aspect-ratio:3/4;width:100%;max-width:340px}
+  .serv .side .ph>img{object-position:center top}
+}
