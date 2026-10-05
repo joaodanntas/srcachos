@@ -183,11 +183,26 @@ body>footer a{padding:8px 0;display:inline-block}
 /* ===== Fix mobile: menu e imagem de serviços ===== */
 .logo{white-space:nowrap}
 
+/* ===== Menu mobile como dropdown sobreposto ===== */
 @media(max-width:760px){
-  /* permite o nav descer para a linha de baixo */
-  header .wrap{flex-wrap:wrap;row-gap:0}
-  .menu-toggle{flex:none}
-  nav{flex:0 0 100%;width:100%}
+  header .wrap{flex-wrap:nowrap}
+  nav{
+    position:absolute;
+    top:calc(100% + 1px);
+    right:var(--pad);
+    width:auto;
+    min-width:190px;
+    flex:none;
+    padding:8px 18px;
+    background:var(--bone);
+    border:1px solid #33190f22;
+    border-radius:2px;
+    box-shadow:0 14px 30px #33190f26;
+    text-align:right;
+    z-index:30;
+  }
+  nav a{padding:12px 0}
+  nav a + a{border-top:1px solid #33190f14}
 }
 
 @media(max-width:860px){

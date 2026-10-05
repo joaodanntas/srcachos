@@ -32,9 +32,19 @@ $("#ig").href=C.instagram;
 document.querySelectorAll("[data-wa]").forEach(a=>{a.href=wa(a.dataset.wa, "appointment");a.target="_blank";a.rel="noopener"});
 document.querySelectorAll("[data-wa-products]").forEach(a=>{a.href=wa(a.dataset.waProducts, "products");a.target="_blank";a.rel="noopener"});
 /* menu */
+/* menu */
 const menuBtn=$(".menu-toggle"), nav=$("#site-nav");
-menuBtn?.addEventListener("click",()=>{const open=menuBtn.getAttribute("aria-expanded")==="true";menuBtn.setAttribute("aria-expanded",String(!open));menuBtn.setAttribute("aria-label",open?"Abrir menu":"Fechar menu");nav.classList.toggle("open",!open)});
-nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{menuBtn?.setAttribute("aria-expanded","false");nav.classList.remove("open")}));
+const setMenu=open=>{
+  menuBtn.setAttribute("aria-expanded",String(open));
+  menuBtn.setAttribute("aria-label",open?"Fechar menu":"Abrir menu");
+  nav.classList.toggle("open",open);
+  const s=menuBtn.querySelector("span"); if(s) s.textContent=open?"×":"+";
+};
+menuBtn?.addEventListener("click",e=>{e.stopPropagation();setMenu(menuBtn.getAttribute("aria-expanded")!=="true")});
+nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
+document.addEventListener("click",e=>{if(nav.classList.contains("open")&&!nav.contains(e.target)&&!menuBtn.contains(e.target))setMenu(false)});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")setMenu(false)});
+addEventListener("resize",()=>{if(innerWidth>760)setMenu(false)});
 /* rolls */
 const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
 document.querySelectorAll(".arrows").forEach(g=>{const t=$("#"+g.firstElementChild.dataset.roll),[a,b]=g.children;const up=()=>{const m=t.scrollWidth-t.clientWidth;g.style.display=m>4?"flex":"none";a.disabled=t.scrollLeft<4;b.disabled=t.scrollLeft>m-4};g.addEventListener("click",e=>{const x=e.target.closest("button");if(x)t.scrollBy({left:Number(x.dataset.d)*t.clientWidth*.8,behavior:reduce?"auto":"smooth"})});t.addEventListener("scroll",up,{passive:true});addEventListener("resize",up);up()});
